@@ -36,12 +36,12 @@ const PlatformIconList = ({ platforms }: Props) => {
     ios: MdPhoneIphone,
     web: BsGlobe,
   };
+  /* marginY={1} theme.space margin will calculate on this bases like value 1
+  default value in chakra 4px*/
   return (
     <>
       <HStack marginY={1}>
         {" "}
-        //theme.space margin will calculate on this bases like value 1 //default
-        value in chakra 4px
         {platforms.map((platform) => (
           <Icon
             as={iconMap[platform.slug]}

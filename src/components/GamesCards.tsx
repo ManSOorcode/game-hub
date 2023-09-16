@@ -2,6 +2,7 @@ import {
   Card,
   CardBody,
   CardHeader,
+  HStack,
   Heading,
   Image,
   Text,
@@ -11,6 +12,7 @@ import React from "react";
 
 import { Game } from "../hook/useGames";
 import PlatformIconList from "./PlatformIconList";
+import CriticScore from "./CriticScore";
 
 interface Props {
   game: Game;
@@ -18,7 +20,7 @@ interface Props {
 
 const GamesCards = ({ game }: Props) => {
   const { toggleColorMode, colorMode } = useColorMode();
-  console.log(colorMode);
+
   return (
     <Card
       overflow={"hidden"}
@@ -28,9 +30,12 @@ const GamesCards = ({ game }: Props) => {
       <Image src={game.background_image} />
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
-        <PlatformIconList
-          platforms={game.parent_platforms.map((p) => p.platform)}
-        />
+        <HStack justifyContent={"space-between"}>
+          <PlatformIconList
+            platforms={game.parent_platforms.map((p) => p.platform)}
+          />
+          <CriticScore score={game.metacritic} />
+        </HStack>
       </CardBody>
     </Card>
   );
