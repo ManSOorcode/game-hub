@@ -24,6 +24,7 @@ const GamesCards = ({ game }: Props) => {
 
   return (
     <Card
+      width={"300px"}
       overflow={"hidden"}
       borderRadius={10}
       boxShadow={colorMode == "dark" ? "base" : "xl"}
