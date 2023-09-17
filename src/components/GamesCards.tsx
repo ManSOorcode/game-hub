@@ -25,7 +25,10 @@ const GamesCards = ({ game }: Props) => {
 
   return (
     <GameCardContainer>
-      <Card boxShadow={colorMode == "dark" ? "base" : "xl"}>
+      <Card
+        boxShadow={colorMode == "dark" ? "base" : "xl"}
+        height={{ lg: "100%" }}
+      >
         <Image src={getCroppedImagesUrl(game.background_image)} />
         <CardBody>
           <Heading fontSize="2xl">{game.name}</Heading>
