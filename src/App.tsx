@@ -3,8 +3,11 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGride from "./components/GameGride";
 import GenresList from "./components/genres/GenresList";
+import { useState } from "react";
+import { Genre } from "./hook/useGenres";
 
 function App() {
+  const [selectedGenre, setSelectGenre] = useState<Genre | null>(null);
   return (
     <Grid
       templateAreas={{
@@ -21,12 +24,15 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area={"aside"} paddingX={5}>
-          <GenresList />
+          <GenresList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(gener) => setSelectGenre(gener)}
+          />
         </GridItem>
       </Show>
 
       <GridItem area={"main"}>
-        <GameGride />
+        <GameGride selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>
   );
