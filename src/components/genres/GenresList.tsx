@@ -1,11 +1,26 @@
-import { HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
+import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
 import useGenres from "../../hook/useGenres";
 import getCroppedImagesUrl from "../../services/image-crops";
+import GamesCardSkeleton from "../GamesCardSkeleton";
+import GenresCardSkeleton from "./GenresCardSkeleton";
+import ExtraData from "../../assets/useExtraData";
+import useExtraData from "../../assets/useExtraData";
 
 const GenresList = () => {
-  const { data } = useGenres();
+  const { data, isLoading, error } = useGenres();
+
+  // if (isLoading) return <Spinner />;
+
+  const { totalGenres } = useExtraData();
+
+  if (error) return null;
+
   return (
     <List>
+      {isLoading &&
+        totalGenres.map((totalGenre) => (
+          <GenresCardSkeleton key={totalGenre.id} />
+        ))}
       {data.map((genre) => (
         <ListItem key={genre.id} paddingY="5px">
           <HStack>

@@ -3,13 +3,18 @@ import useGames from "../hook/useGames";
 import GamesCards from "./GamesCards";
 import GamesCardSkeleton from "./GamesCardSkeleton";
 
+// import totalGames from "../assets/extra-data";
+
+import useExtraData from "../assets/useExtraData";
+
 const GameGride = () => {
   const { isLoading, data, error } = useGames();
 
   //   const skeletons = game.length;
   //   console.log(skeletons);
 
-  const skeletons = [1, 2, 3, 4, 5, 6];
+  const { totalGames } = useExtraData();
+  // console.log(data);
 
   return (
     <>
@@ -20,7 +25,9 @@ const GameGride = () => {
         spacing={3}
       >
         {isLoading &&
-          skeletons.map((skeleton) => <GamesCardSkeleton key={skeleton} />)}
+          totalGames.map((totalGame) => (
+            <GamesCardSkeleton key={totalGame.id} />
+          ))}
         {data.map((game) => (
           <GamesCards key={game.id} game={game} />
         ))}
