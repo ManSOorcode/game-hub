@@ -7,13 +7,15 @@ import GamesCardSkeleton from "./GamesCardSkeleton";
 
 import useExtraData from "../assets/useExtraData";
 import { Genre } from "../hook/useGenres";
+import { Platform } from "../hook/usePlatforms";
 
 interface Props {
   selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
 }
 
-const GameGride = ({ selectedGenre }: Props) => {
-  const { isLoading, data, error } = useGames(selectedGenre);
+const GameGride = ({ selectedGenre, selectedPlatform }: Props) => {
+  const { isLoading, data, error } = useGames(selectedGenre, selectedPlatform);
 
   //   const skeletons = game.length;
   //   console.log(skeletons);
