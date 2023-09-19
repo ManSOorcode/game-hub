@@ -8,14 +8,14 @@ import GamesCardSkeleton from "./GamesCardSkeleton";
 import useExtraData from "../assets/useExtraData";
 import { Genre } from "../hook/useGenres";
 import { Platform } from "../hook/usePlatforms";
+import { GameQuery } from "../App";
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery;
 }
 
-const GameGride = ({ selectedGenre, selectedPlatform }: Props) => {
-  const { isLoading, data, error } = useGames(selectedGenre, selectedPlatform);
+const GameGride = ({ gameQuery }: Props) => {
+  const { isLoading, data, error } = useGames(gameQuery);
 
   //   const skeletons = game.length;
   //   console.log(skeletons);
