@@ -13,11 +13,11 @@ import { IconType } from "react-icons";
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
-import { Platform } from "../hook/useGames";
+import { Platforms } from "../hook/useGames";
 import { HStack, Icon, Text, useColorMode } from "@chakra-ui/react";
 
 interface Props {
-  platforms: Platform[];
+  platforms: Platforms[];
 }
 
 const PlatformIconList = ({ platforms }: Props) => {
