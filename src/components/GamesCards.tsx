@@ -1,26 +1,18 @@
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  HStack,
-  Heading,
-  Image,
-  Text,
-  useColorMode,
-} from "@chakra-ui/react";
-import React from "react";
+import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
 
 import { Game } from "../hook/useGames";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImagesUrl from "../services/image-crops";
 import GameCardContainer from "./GameCardContainer";
+import Emoji from "./emoji/Emoji";
 
 interface Props {
   game: Game;
 }
 
 const GamesCards = ({ game }: Props) => {
+  console.log(game.rating_top);
   return (
     <GameCardContainer>
       <Card height={{ lg: "100%" }}>
@@ -32,7 +24,10 @@ const GamesCards = ({ game }: Props) => {
             />
             <CriticScore score={game.metacritic} />
           </HStack>
-          <Heading fontSize="2xl">{game.name}</Heading>
+          <Heading fontSize="2xl">
+            {game.name}
+            <Emoji rating={game.rating_top} />
+          </Heading>
         </CardBody>
       </Card>
     </GameCardContainer>
