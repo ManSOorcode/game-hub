@@ -1,5 +1,5 @@
 // import './App.css'
-import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGride from "./components/GameGride";
 import GenresList from "./components/genres/GenresList";
@@ -8,6 +8,7 @@ import { Genre } from "./hook/useGenres";
 import PlatformSelector from "./components/platformSelector/PlatformSelector";
 import { Platform } from "./hook/usePlatforms";
 import SortSelector from "./components/sortSelector/SortSelector";
+import GamesHeading from "./components/gameHeading/GamesHeading";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -44,20 +45,23 @@ function App() {
       </Show>
 
       <GridItem area={"main"}>
-        <HStack spacing={5} padding={2} marginBottom={5}>
-          <PlatformSelector
-            selectedPlatform={gameQuery.platform}
-            onSelectPlatform={(platform) =>
-              setGameQuery({ ...gameQuery, platform })
-            }
-          />
-          <SortSelector
-            sortOrder={gameQuery.sortOrder}
-            onSelectOrder={(sortOrder) =>
-              setGameQuery({ ...gameQuery, sortOrder })
-            }
-          />
-        </HStack>
+        <Box padding={2}>
+          <GamesHeading gameQuery={gameQuery} />
+          <HStack spacing={5} marginBottom={5}>
+            <PlatformSelector
+              selectedPlatform={gameQuery.platform}
+              onSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
+            />
+            <SortSelector
+              sortOrder={gameQuery.sortOrder}
+              onSelectOrder={(sortOrder) =>
+                setGameQuery({ ...gameQuery, sortOrder })
+              }
+            />
+          </HStack>
+        </Box>
         <GameGride gameQuery={gameQuery} />
       </GridItem>
     </Grid>
