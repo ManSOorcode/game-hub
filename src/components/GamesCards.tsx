@@ -21,14 +21,9 @@ interface Props {
 }
 
 const GamesCards = ({ game }: Props) => {
-  const { toggleColorMode, colorMode } = useColorMode();
-
   return (
     <GameCardContainer>
-      <Card
-        boxShadow={colorMode == "dark" ? "base" : "xl"}
-        height={{ lg: "100%" }}
-      >
+      <Card height={{ lg: "100%" }}>
         <Image src={getCroppedImagesUrl(game.background_image)} />
         <CardBody>
           <Heading fontSize="2xl">{game.name}</Heading>
