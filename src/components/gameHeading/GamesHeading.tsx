@@ -1,4 +1,4 @@
-import { Heading } from "@chakra-ui/react";
+import { Heading, useColorMode } from "@chakra-ui/react";
 import { GameQuery } from "../../App";
 
 interface Props {
@@ -10,12 +10,18 @@ const GamesHeading = ({ gameQuery }: Props) => {
   //Xbox Games
   //Action Games
   //Xbox Action Games
+  const { toggleColorMode, colorMode } = useColorMode();
 
   const heading = `${gameQuery.platform?.name || ""} ${
     gameQuery.genre?.name || ""
   } Games`;
   return (
-    <Heading marginY={5} fontSize={"5xl"} as="h1">
+    <Heading
+      color={colorMode === "dark" ? "teal.400" : "green.700"}
+      marginY={5}
+      fontSize={"5xl"}
+      as="h1"
+    >
       {heading}
     </Heading>
   );
