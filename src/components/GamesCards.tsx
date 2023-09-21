@@ -12,7 +12,7 @@ interface Props {
 }
 
 const GamesCards = ({ game }: Props) => {
-  console.log(game.rating_top);
+ 
   return (
     <GameCardContainer>
       <Card height={{ lg: "100%" }}>
